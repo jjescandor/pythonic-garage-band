@@ -14,6 +14,6 @@
 ### Tests
 
 1. Command to run test: pytest -v
-1. There are 13 tests
+1. There are 33 tests
 1. All tests passed
 

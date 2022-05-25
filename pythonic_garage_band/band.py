@@ -1,10 +1,10 @@
 class Band:
     instances = []
 
-    def __init__(self, name, members=None):
+    def __init__(self, name, members=[]):
         self.name = name
         self.members = members
-        Band.instances.append(repr(self))
+        Band.instances.append(self)
 
     def __str__(self):
         return f"The band {self.name}"
@@ -13,23 +13,24 @@ class Band:
         return f"Band instance. name={self.name}, members={self.members}"
 
     def play_solos(self):
+        solos = []
         for member in self.members:
-            return member.play_solo()
+            solos.append(member.play_solo())
+        return solos
 
     @classmethod
     def to_list(cls):
-        print("band", cls.instances)
         return Band.instances
 
 
 class Musician(Band):
     def __init__(self, name):
-        super().__init__(name)
+        self.name = name
 
 
-class Guitarist(Band):
+class Guitarist(Musician):
     def __init__(self, name):
-        super().__init__(name)
+        self.name = name
     
     def __str__(self):
         return f"My name is {self.name} and I play guitar"
@@ -47,9 +48,9 @@ class Guitarist(Band):
 
 
 
-class Bassist(Band):
+class Bassist(Musician):
     def __init__(self, name):
-        super().__init__(name)
+        self.name = name
 
     def __str__(self):
         return f"My name is {self.name} and I play bass"
@@ -66,9 +67,9 @@ class Bassist(Band):
         return "bom bom buh bom"
 
 
-class Drummer(Band):
+class Drummer(Musician):
     def __init__(self, name):
-        super().__init__(name)
+        self.name = name
 
     def __str__(self):
         return f"My name is {self.name} and I play drums"

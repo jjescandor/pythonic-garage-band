@@ -110,9 +110,8 @@ def test_individual_solos(one_band):
         elif member.get_instrument() == "drums":
             assert member.play_solo() == "rattle boom crash"
 
-# @pytest.mark.skip("pending")
+@pytest.mark.skip("pending")
 def test_band_members(one_band):
-
     assert len(one_band.members) == 3
 
     assert isinstance(one_band.members[0], Musician)
@@ -139,7 +138,6 @@ def test_play_solos_for_whole_band(one_band):
 
 # @pytest.mark.skip("pending")
 def test_to_list():
-    clean()
     assert Band.to_list() == []
     Band("The Nobodies", [])
     assert len(Band.to_list()) == 1
@@ -150,7 +148,7 @@ def test_to_list():
 #######################
 
 
-# @pytest.fixture
+#@pytest.fixture
 def nirvana_data():
     return {
         "name": "Nirvana",
@@ -162,16 +160,17 @@ def nirvana_data():
     }
 
 
-# @pytest.fixture
+@pytest.fixture
 def one_band():
     some_band = Band(
         "Nirvana",
         [Guitarist("Kurt Cobain"), Bassist("Krist Novoselic"), Drummer("Dave Grohl"),],
     )
+    print("Some Band", some_band)
     return some_band
 
 
-# @pytest.fixture(autouse=True)
+@pytest.fixture(autouse=True)
 def clean():
     """runs before each test automatically
     There's also a more advanced way to run code after each test as well
