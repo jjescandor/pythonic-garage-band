@@ -1,3 +1,6 @@
+from abc import ABC, abstractmethod
+
+
 class Band:
     instances = []
 
@@ -23,10 +26,21 @@ class Band:
         return Band.instances
 
 
-class Musician(Band):
+class Musician(ABC, Band):
     def __init__(self, name):
         self.name = name
 
+    @property
+    def __str__(self):
+        raise NotImplementedError
+
+    @property
+    def __repr__(self):
+        raise NotImplementedError
+
+    @abstractmethod
+    def some_method_that_must_be_implemented_in_base_class(self):
+        raise NotImplementedError
 
 class Guitarist(Musician):
     def __init__(self, name):
@@ -37,6 +51,9 @@ class Guitarist(Musician):
 
     def __repr__(self):
         return f"Guitarist instance. Name = {self.name}"
+
+    def some_method_that_must_be_implemented_in_base_class(self):
+        pass
 
     @staticmethod
     def get_instrument():
@@ -50,13 +67,16 @@ class Guitarist(Musician):
 
 class Bassist(Musician):
     def __init__(self, name):
-        self.name = name
+        super().__init__(name)
 
     def __str__(self):
         return f"My name is {self.name} and I play bass"
 
     def __repr__(self):
         return f"Bassist instance. Name = {self.name}"
+
+    def some_method_that_must_be_implemented_in_base_class(self):
+        pass
 
     @staticmethod
     def get_instrument():
@@ -69,13 +89,16 @@ class Bassist(Musician):
 
 class Drummer(Musician):
     def __init__(self, name):
-        self.name = name
+        super().__init__(name)
 
     def __str__(self):
         return f"My name is {self.name} and I play drums"
 
     def __repr__(self):
         return f"Drummer instance. Name = {self.name}"
+
+    def some_method_that_must_be_implemented_in_base_class(self):
+        pass
 
     @staticmethod
     def get_instrument():
@@ -84,6 +107,10 @@ class Drummer(Musician):
     @staticmethod
     def play_solo():
         return "rattle boom crash"
+
+
+class Keyboardist(Musician):
+    pass
 
 
 if __name__ == "__main__":
