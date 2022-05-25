@@ -10,6 +10,7 @@
 ### Setup
 
 1. pip install pytest
+2. pip install pyyaml
 
 ### Tests
 
