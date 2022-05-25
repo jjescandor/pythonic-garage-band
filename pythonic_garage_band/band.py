@@ -42,6 +42,7 @@ class Musician(ABC, Band):
     def some_method_that_must_be_implemented_in_base_class(self):
         raise NotImplementedError
 
+
 class Guitarist(Musician):
     def __init__(self, name):
         self.name = name
