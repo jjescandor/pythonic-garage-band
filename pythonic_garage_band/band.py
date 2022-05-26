@@ -43,11 +43,11 @@ class Musician(ABC):
         self.solo = solo
 
     @abstractmethod
-    def __str__(self):
+    def __repr__(self):
         raise NotImplementedError
 
     @abstractmethod
-    def some_method_that_must_be_implemented_in_base_class(self):
+    def __str__(self):
         raise NotImplementedError
 
     @abstractmethod
@@ -55,13 +55,25 @@ class Musician(ABC):
         raise NotImplementedError
 
     @abstractmethod
+    def set_instrument(self, instrument):
+        raise NotImplementedError
+
+    @abstractmethod
+    def set_solo(self, solo):
+        raise NotImplementedError
+
+    @abstractmethod
     def play_solo(self):
+        raise NotImplementedError
+
+    @abstractmethod
+    def some_method_that_must_be_implemented_in_base_class(self):
         raise NotImplementedError
 
 
 class Guitarist(Musician):
     """
-    Subclass of Musician
+    Guitarist subclass of Musician
     """
 
     def __init__(self, name, instrument="guitar", solo="face melting guitar solo"):
@@ -73,14 +85,20 @@ class Guitarist(Musician):
     def __repr__(self):
         return f"Guitarist instance. Name = {self.name}"
 
-    def some_method_that_must_be_implemented_in_base_class(self):
-        pass
-
     def get_instrument(self):
         return self.instrument
 
+    def set_instrument(self, instrument):
+        self.solo = instrument
+
+    def set_solo(self, solo):
+        self.solo = solo
+
     def play_solo(self):
         return self.solo
+
+    def some_method_that_must_be_implemented_in_base_class(self):
+        pass
 
 
 class Bassist(Musician):
@@ -97,14 +115,20 @@ class Bassist(Musician):
     def __repr__(self):
         return f"Bassist instance. Name = {self.name}"
 
-    def some_method_that_must_be_implemented_in_base_class(self):
-        pass
-
     def get_instrument(self):
         return self.instrument
 
+    def set_instrument(self, instrument):
+        self.solo = instrument
+
+    def set_solo(self, solo):
+        self.solo = solo
+
     def play_solo(self):
         return self.solo
+
+    def some_method_that_must_be_implemented_in_base_class(self):
+        pass
 
 
 class Drummer(Musician):
@@ -123,6 +147,12 @@ class Drummer(Musician):
 
     def get_instrument(self):
         return self.instrument
+
+    def set_instrument(self, instrument):
+        self.solo = instrument
+
+    def set_solo(self, solo):
+        self.solo = solo
 
     def play_solo(self):
         return self.solo
@@ -147,6 +177,12 @@ class Keyboardist(Musician):
         pass
 
     def get_instrument(self):
+        pass
+
+    def set_instrument(self, instrument):
+        pass
+
+    def set_solo(self, solo):
         pass
 
     def play_solo(self):
