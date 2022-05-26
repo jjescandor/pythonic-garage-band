@@ -1,8 +1,13 @@
-from abc import ABC, abstractmethod
+from abc import ABC, abstractmethod, abstractproperty
 
 
 class Band:
     instances = []
+    solos = []
+
+    @classmethod
+    def to_list(cls):
+        return cls.instances
 
     def __init__(self, name, members=[]):
         self.name = name
@@ -16,39 +21,42 @@ class Band:
         return f"Band instance. name={self.name}, members={self.members}"
 
     def play_solos(self):
-        solos = []
         for member in self.members:
-            solos.append(member.play_solo())
-        return solos
-
-    @classmethod
-    def to_list(cls):
-        return Band.instances
+            print(member)
+            Band.solos.append(member.play_solo())
+        return Band.solos
 
 
-class Musician(ABC, Band):
-    def __init__(self, name):
+class Musician(ABC):
+    def __init__(self, name, instrument, solo):
         self.name = name
+        self.instrument = instrument
+        self.solo = solo
 
-    @property
+    @abstractmethod
     def __str__(self):
-        pass
-
-    @property
-    def __repr__(self):
-        pass
+        raise NotImplementedError
 
     @abstractmethod
     def some_method_that_must_be_implemented_in_base_class(self):
         raise NotImplementedError
 
+    @abstractmethod
+    def get_instrument(self):
+        raise NotImplementedError
+
+    @abstractmethod
+    def play_solo(self):
+        raise NotImplementedError
+
 
 class Guitarist(Musician):
+
     def __init__(self, name):
-        self.name = name
+        super().__init__(name, "guitar", "face melting guitar solo")
     
     def __str__(self):
-        return f"My name is {self.name} and I play guitar"
+        return f"My name is {self.name} and I play {self.instrument}"
 
     def __repr__(self):
         return f"Guitarist instance. Name = {self.name}"
@@ -56,21 +64,20 @@ class Guitarist(Musician):
     def some_method_that_must_be_implemented_in_base_class(self):
         pass
 
-    @staticmethod
-    def get_instrument():
-        return "guitar"
+    def get_instrument(self):
+        return self.instrument
 
-    @staticmethod
-    def play_solo():
-        return "face melting guitar solo"
+    def play_solo(self):
+        return self.solo
 
 
 class Bassist(Musician):
+
     def __init__(self, name):
-        super().__init__(name)
+        super().__init__(name, "bass", "bom bom buh bom")
 
     def __str__(self):
-        return f"My name is {self.name} and I play bass"
+        return f"My name is {self.name} and I play {self.instrument}"
 
     def __repr__(self):
         return f"Bassist instance. Name = {self.name}"
@@ -78,40 +85,51 @@ class Bassist(Musician):
     def some_method_that_must_be_implemented_in_base_class(self):
         pass
 
-    @staticmethod
-    def get_instrument():
-        return "bass"
+    def get_instrument(self):
+        return self.instrument
 
-    @staticmethod
-    def play_solo():
-        return "bom bom buh bom"
+    def play_solo(self):
+        return self.solo
 
 
 class Drummer(Musician):
+
     def __init__(self, name):
-        super().__init__(name)
+        super().__init__(name, "drums", "rattle boom crash")
 
     def __str__(self):
-        return f"My name is {self.name} and I play drums"
+        return f"My name is {self.name} and I play {self.instrument}"
 
     def __repr__(self):
         return f"Drummer instance. Name = {self.name}"
 
+    def get_instrument(self):
+        return self.instrument
+
+    def play_solo(self):
+        return self.solo
+
     def some_method_that_must_be_implemented_in_base_class(self):
         pass
 
-    @staticmethod
-    def get_instrument():
-        return "drums"
-
-    @staticmethod
-    def play_solo():
-        return "rattle boom crash"
-
 
 class Keyboardist(Musician):
-    pass
+
+    def __str__(self):
+        pass
+
+    def __repr__(self):
+        pass
+
+    def get_instrument(self):
+        pass
+
+    def play_solo(self):
+        pass
 
 
 if __name__ == "__main__":
-    help(Drummer)
+    jonas = Band("Jonas Brothers", [Drummer("Nick"), Guitarist("Joe"), Bassist("Kevin")])
+    print(str(jonas))
+    print(repr(jonas))
+    print(jonas.play_solos())
