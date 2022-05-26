@@ -15,6 +15,6 @@
 ### Tests
 
 1. Command to run test: pytest -v
-1. There are 41 tests including stretch goals
+1. There are 21 tests including stretch goals
 1. All tests passed
 
