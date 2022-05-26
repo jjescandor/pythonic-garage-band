@@ -2,6 +2,10 @@ from abc import ABC, abstractmethod
 
 
 class Band:
+    """
+    Parent class
+    """
+
     instances = []
     solos = []
 
@@ -28,6 +32,11 @@ class Band:
 
 
 class Musician(ABC):
+    """
+    Subclass of Band
+    Abstract class
+    """
+
     def __init__(self, name, instrument, solo):
         self.name = name
         self.instrument = instrument
@@ -51,9 +60,12 @@ class Musician(ABC):
 
 
 class Guitarist(Musician):
+    """
+    Subclass of Musician
+    """
 
-    def __init__(self, name):
-        super().__init__(name, "guitar", "face melting guitar solo")
+    def __init__(self, name, instrument="guitar", solo="face melting guitar solo"):
+        super().__init__(name, instrument, solo)
     
     def __str__(self):
         return f"My name is {self.name} and I play {self.instrument}"
@@ -72,9 +84,12 @@ class Guitarist(Musician):
 
 
 class Bassist(Musician):
+    """
+    Subclass of Musician
+    """
 
-    def __init__(self, name):
-        super().__init__(name, "bass", "bom bom buh bom")
+    def __init__(self, name, instrument="bass", solo="bom bom buh bom"):
+        super().__init__(name, instrument, solo)
 
     def __str__(self):
         return f"My name is {self.name} and I play {self.instrument}"
@@ -93,9 +108,12 @@ class Bassist(Musician):
 
 
 class Drummer(Musician):
+    """
+    Subclass of Musician
+    """
 
-    def __init__(self, name):
-        super().__init__(name, "drums", "rattle boom crash")
+    def __init__(self, name, instrument="drums", solo="rattle boom crash"):
+        super().__init__(name, instrument, solo)
 
     def __str__(self):
         return f"My name is {self.name} and I play {self.instrument}"
@@ -114,9 +132,13 @@ class Drummer(Musician):
 
 
 class Keyboardist(Musician):
+    """
+    Subclass of Musician
+    some_method_that_must_be_implemented_in_base_class() from Musician class is not implemented
+    """
 
-    def __init__(self, name):
-        super().__init__(name, "keyboard", "lah lah lah")
+    def __init__(self, name, instrument="keyboard", solo="lah lah lah"):
+        super().__init__(name, instrument, solo)
 
     def __str__(self):
         pass
