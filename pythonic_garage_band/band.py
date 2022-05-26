@@ -115,6 +115,9 @@ class Drummer(Musician):
 
 class Keyboardist(Musician):
 
+    def __init__(self, name):
+        super().__init__(name, "keyboard", "lah lah lah")
+
     def __str__(self):
         pass
 
