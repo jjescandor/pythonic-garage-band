@@ -32,11 +32,11 @@ class Musician(ABC, Band):
 
     @property
     def __str__(self):
-        raise NotImplementedError
+        pass
 
     @property
     def __repr__(self):
-        raise NotImplementedError
+        pass
 
     @abstractmethod
     def some_method_that_must_be_implemented_in_base_class(self):
@@ -63,7 +63,6 @@ class Guitarist(Musician):
     @staticmethod
     def play_solo():
         return "face melting guitar solo"
-
 
 
 class Bassist(Musician):
@@ -115,4 +114,4 @@ class Keyboardist(Musician):
 
 
 if __name__ == "__main__":
-    pass
+    help(Drummer)
