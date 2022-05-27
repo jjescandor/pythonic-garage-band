@@ -27,7 +27,7 @@ class Band:
         return [member.play_solo() for member in self.members]
 
 
-class Musician(ABC, Band):
+class Musician(ABC):
     """
     Subclass of Band
     Abstract class
