@@ -31,7 +31,7 @@ class Band:
         return Band.solos
 
 
-class Musician(ABC):
+class Musician(ABC, Band):
     """
     Subclass of Band
     Abstract class
@@ -73,7 +73,7 @@ class Musician(ABC):
 
 class Guitarist(Musician):
     """
-    Guitarist subclass of Musician
+    Guitarist subclass of Musician and Band
     """
 
     def __init__(self, name, instrument="guitar", solo="face melting guitar solo"):
@@ -103,7 +103,7 @@ class Guitarist(Musician):
 
 class Bassist(Musician):
     """
-    Subclass of Musician
+    Subclass of Musician and Band
     """
 
     def __init__(self, name, instrument="bass", solo="bom bom buh bom"):
@@ -133,7 +133,7 @@ class Bassist(Musician):
 
 class Drummer(Musician):
     """
-    Subclass of Musician
+    Subclass of Musician and Band
     """
 
     def __init__(self, name, instrument="drums", solo="rattle boom crash"):
