@@ -7,7 +7,6 @@ class Band:
     """
 
     instances = []
-    solos = []
 
     @classmethod
     def to_list(cls):
@@ -25,10 +24,7 @@ class Band:
         return f"Band instance. name={self.name}, members={self.members}"
 
     def play_solos(self):
-        for member in self.members:
-            print(member)
-            Band.solos.append(member.play_solo())
-        return Band.solos
+        return [member.play_solo() for member in self.members]
 
 
 class Musician(ABC, Band):
@@ -61,6 +57,7 @@ class Musician(ABC, Band):
     @abstractmethod
     def set_solo(self, solo):
         raise NotImplementedError
+        return f"My name is {self.name} and I play {self.instrument}"
 
     @abstractmethod
     def play_solo(self):
