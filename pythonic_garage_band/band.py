@@ -3,7 +3,7 @@ from abc import ABC, abstractmethod
 
 class Band:
     """
-    Parent class
+    Base class
     """
 
     instances = []
@@ -29,7 +29,6 @@ class Band:
 
 class Musician(ABC):
     """
-    Subclass of Band
     Abstract class
     """
 
@@ -70,7 +69,7 @@ class Musician(ABC):
 
 class Guitarist(Musician):
     """
-    Guitarist subclass of Musician and Band
+    Subclass of Musician
     """
 
     def __init__(self, name, instrument="guitar", solo="face melting guitar solo"):
@@ -100,7 +99,7 @@ class Guitarist(Musician):
 
 class Bassist(Musician):
     """
-    Subclass of Musician and Band
+    Subclass of Musician
     """
 
     def __init__(self, name, instrument="bass", solo="bom bom buh bom"):
@@ -130,7 +129,7 @@ class Bassist(Musician):
 
 class Drummer(Musician):
     """
-    Subclass of Musician and Band
+    Subclass of Musician
     """
 
     def __init__(self, name, instrument="drums", solo="rattle boom crash"):
